@@ -13,26 +13,36 @@ import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_main.mTextView
+import kotlinx.android.synthetic.main.activity_main.textView_dates
+import kotlinx.android.synthetic.main.activity_main.textView_results
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.lang.StringBuilder
+import android.databinding.DataBindingUtil
+import com.example.felipe.pipemovies.databinding.ActivityMainBinding
+
 
 class MainActivity() : AppCompatActivity() {
 
     val compositeDisposable = CompositeDisposable()
     val viewModel = MovielistViewModel()
 
+    // databindind initialization
+    private val binding: ActivityMainBinding by lazy {
+        DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
         bindSubscription()
+
         viewModel.getMovielist()
     }
 
-    fun bindSubscription() {
+    private fun bindSubscription() {
         compositeDisposable.add(viewModel.observablePublishSubject()
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -47,8 +57,7 @@ class MainActivity() : AppCompatActivity() {
     }
 
     fun populate(movielist: Movielist){
-        var sb = StringBuilder()
-        sb.append(movielist.totalPages)
-        mTextView.text = sb.toString()
+        binding.movielist = movielist
+
     }
 }

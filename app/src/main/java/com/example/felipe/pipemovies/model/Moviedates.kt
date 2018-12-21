@@ -5,4 +5,8 @@ import com.google.gson.annotations.SerializedName
 public data class Moviedates (
     @SerializedName("maximum") val maximum: String,
     @SerializedName("minimum") val minimum: String
-)
+) {
+    override fun toString():String {
+        return "$minimum to $maximum"
+    }
+}
