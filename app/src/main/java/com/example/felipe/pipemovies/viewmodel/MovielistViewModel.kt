@@ -1,13 +1,10 @@
 package com.example.felipe.pipemovies.viewmodel
 
-import android.arch.lifecycle.MutableLiveData
 import android.util.Log
 import com.example.felipe.pipemovies.action.PipeActions
 import com.example.felipe.pipemovies.datamodel.MovielistDataModel
-import com.example.felipe.pipemovies.model.Movie
 import com.example.felipe.pipemovies.model.Movielist
 import io.reactivex.Observable
-import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
 
@@ -37,5 +34,7 @@ class MovielistViewModel {
     fun observablePublishSubject(): Observable<PipeActions> {
         return publishSubject.hide()
     }
+
+    fun foo(i: Int, j: Int) = i + j
 
 }

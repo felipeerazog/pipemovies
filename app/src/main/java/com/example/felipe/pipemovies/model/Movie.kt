@@ -2,7 +2,7 @@ package com.example.felipe.pipemovies.model
 
 import com.google.gson.annotations.SerializedName
 
-public data class Movie (
+data class Movie (
         @SerializedName("id") val id: Int,
         @SerializedName("title") val title: String,
         @SerializedName("popularity") val popularity: String,

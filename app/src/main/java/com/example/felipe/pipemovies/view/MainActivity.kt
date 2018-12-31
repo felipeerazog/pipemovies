@@ -5,21 +5,10 @@ import android.os.Bundle
 import com.example.felipe.pipemovies.R
 import com.example.felipe.pipemovies.action.PipeActions
 import com.example.felipe.pipemovies.model.Movielist
-import com.example.felipe.pipemovies.service.MovielistService
 import com.example.felipe.pipemovies.viewmodel.MovielistViewModel
-import com.google.gson.FieldNamingPolicy
-import com.google.gson.GsonBuilder
-import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_main.textView_dates
-import kotlinx.android.synthetic.main.activity_main.textView_results
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import java.lang.StringBuilder
 import android.databinding.DataBindingUtil
 import com.example.felipe.pipemovies.databinding.ActivityMainBinding
 
@@ -58,6 +47,6 @@ class MainActivity() : AppCompatActivity() {
 
     fun populate(movielist: Movielist){
         binding.movielist = movielist
-
     }
+
 }
